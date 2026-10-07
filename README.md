@@ -8,6 +8,10 @@ Planned options include Thai tea, black tea, green tea, and taro; medium or larg
 cups; whole, oat, or coconut milk; sweetness, ice, and toppings. Hot drinks cannot
 include pudding (an app customization rule).
 
+## Video Walkthrough
+
+[Watch the video walkthrough on Google Drive](https://drive.google.com/file/d/19itkxXqjaNE8ZtfXk3ngSC0Tdw4QnMHy/view?usp=sharing)
+
 ## Step 1: Database setup
 
 1. Create a PostgreSQL database on Render.
@@ -116,3 +120,8 @@ variables. `server/.env` remains private and excluded from Git.
 Deployments run automatically when `main` is updated on GitHub. The initial
 deployment reached `live`, and the public `/api/drinks` endpoint successfully
 queried the database.
+
+Post-deployment checks also passed for creating, reading, updating, and deleting
+a Thai milk tea through the public API, server-side pricing, invalid combinations,
+invalid IDs, option retrieval, and direct loading of a detail URL. The temporary
+deployment test drink was removed after verification.
