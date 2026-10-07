@@ -2,6 +2,8 @@
 
 A WEB103 project for creating, viewing, editing, and deleting custom milk teas.
 
+Live app: https://tea-studio.onrender.com
+
 Planned options include Thai tea, black tea, green tea, and taro; medium or large
 cups; whole, oat, or coconut milk; sweetness, ice, and toppings. Hot drinks cannot
 include pudding (an app customization rule).
@@ -102,5 +104,15 @@ opening details, editing it to add grass jelly ($7.00), seeing it in the list,
 and cancelling the delete confirmation. The test record was then deleted via
 the API, and refreshing the collection showed the empty state.
 
-The app currently runs locally; creating the database does not deploy the web
-application. `server/.env` is private and excluded from Git.
+## Deployment
+
+The app is deployed as a free Node web service on Render in Oregon. Render runs
+`npm install --include=dev && npm run build`, then `npm start` with
+`NODE_ENV=production`. Express serves the built React app and API from the same
+origin. The service connects to the existing Render Postgres database through
+its internal hostname; database credentials are stored in Render environment
+variables. `server/.env` remains private and excluded from Git.
+
+Deployments run automatically when `main` is updated on GitHub. The initial
+deployment reached `live`, and the public `/api/drinks` endpoint successfully
+queried the database.
