@@ -31,3 +31,34 @@ include pudding (an app customization rule).
 ```sh
 npm run dev
 ```
+
+## Step 2: Drinks API
+
+Run `npm run dev`, then access these endpoints on `http://localhost:3000`:
+
+| Method | Path | Purpose |
+| --- | --- | --- |
+| GET | `/api/drinks` | List saved drinks |
+| GET | `/api/drinks/options` | Available options and prices in cents |
+| GET | `/api/drinks/:id` | View a drink |
+| POST | `/api/drinks` | Create a drink |
+| PUT | `/api/drinks/:id` | Replace a drink's customization |
+| DELETE | `/api/drinks/:id` | Delete a drink |
+
+POST and PUT accept all customization fields:
+
+```json
+{
+  "name": "My Thai Milk Tea",
+  "tea_base": "thai",
+  "size": "large",
+  "milk": "oat",
+  "sweetness": 50,
+  "ice": "less",
+  "toppings": ["boba"]
+}
+```
+
+The server calculates the price (this example is $8.00); client-supplied prices
+are ignored. Invalid options, duplicate toppings, and hot drinks with pudding
+return HTTP 400 with an `error` message. Missing drinks return 404.

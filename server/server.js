@@ -3,7 +3,7 @@ import path from 'path'
 import favicon from 'serve-favicon'
 import dotenv from 'dotenv'
 
-// import the router from your routes file
+import drinksRouter from './routes/drinks.js'
 
 
 dotenv.config()
@@ -22,7 +22,16 @@ else if (process.env.NODE_ENV === 'production') {
     app.use(express.static('public'))
 }
 
-// specify the api path for the server to use
+app.use('/api/drinks', drinksRouter)
+app.use('/api', (_req, res) => res.status(404).json({ error: 'API route not found.' }))
+
+app.use((error, _req, res, _next) => {
+    if (error.type === 'entity.parse.failed') {
+        return res.status(400).json({ error: 'Request body must be valid JSON.' })
+    }
+    console.error('API request failed:', error.message)
+    res.status(500).json({ error: 'Unable to complete your request. Please try again.' })
+})
 
 
 if (process.env.NODE_ENV === 'production') {
