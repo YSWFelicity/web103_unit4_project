@@ -1,7 +1,5 @@
-nav {
-    background-color: rgba(0, 0, 0, 0.8);
-    width: 100vw;
-    padding-left: 50px;
-    padding-right: 50px;
-    padding-top: 20px;
-}
+nav { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e4e2d5; max-width: 1120px; margin: auto; padding: 24px; }
+nav ul { display: flex; list-style: none; padding: 0; margin: 0; gap: 20px; }
+.brand { font-family: Georgia, serif; font-size: 27px; }
+.brand span { color: #b98a40; }
+nav > ul:last-child { font-size: 14px; font-weight: 600; }

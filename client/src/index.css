@@ -1,68 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
-#root {
-    --font-family: Rubik, Verdana, sans-serif;
-    --primary: rgb(115, 2, 12);
-    --primary-hover: black;
-    --color: white;
-    --h1-color: var(--color);
-    --h2-color: var(--color);
-    --h3-color: var(--color);
-    --card-background-color: rgba(0, 0, 0, 0.8);
-    --card-sectionning-background-color: rgba(0, 0, 0, 0.8);
-    --form-element-active-border-color: var(--color);
-    --form-element-placeholder-color: gray;
-}
-
-#root h1 {
-    font-size: 3rem;
-    margin-bottom: 0px;
-}
-
-#root h2 {
-    margin-bottom: 0px;
-}
-
-#root h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0px;
-}
-
-#root p {
-    margin-bottom: 10px;
-}
-
-#root [role=button], #root button, #root input[type=submit] {
-    font-family: var(--font-family);
-    font-weight: 500;
-    text-transform: uppercase;
-    border: 2px solid transparent;
-    margin: 10px;
-    width: max-content;
-}
-
-#root [role=button]:hover, #root button:hover, #root input[type=submit]:hover {
-    border: 2px solid var(--color);
-}
-
-#root main {
-    display: flex;
-    overflow-x: hidden;
-    overflow-y: hidden;
-}
-
-#root article {
-    text-align: left;
-    margin-bottom: 5px;
-}
-
-#root article header {
-    border-bottom: 0px;
-    margin-bottom: 10px;
-}
-
-#root article footer {
-    border-top: 0px;
-    margin-top: 0px;
-    display: flex;
-}
+:root { font-family: 'Avenir Next', 'Segoe UI', sans-serif; color: #393c2c; background: #faf7ef; font-synthesis: none; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+a { color: inherit; text-decoration: none; }
+button, input, select { font: inherit; }
+button { cursor: pointer; background: #475638; color: white; border: 0; border-radius: 10px; padding: 15px 20px; font-weight: 600; }
+button:hover { background: #344128; }
+button:disabled { cursor: not-allowed; opacity: .55; }
+:focus-visible { outline: 3px solid #b27429; outline-offset: 3px; }
+h1, h2, p { margin-top: 0; }
+input:not([type=checkbox]), select { width: 100%; padding: 12px; border: 1px solid #ddd9cc; border-radius: 8px; color: #393c2c; background: #fffefb; margin-top: 7px; }
+fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 20px; }
+small { color: #747767; line-height: 1.5; }

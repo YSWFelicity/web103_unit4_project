@@ -62,3 +62,13 @@ POST and PUT accept all customization fields:
 The server calculates the price (this example is $8.00); client-supplied prices
 are ignored. Invalid options, duplicate toppings, and hot drinks with pudding
 return HTTP 400 with an `error` message. Missing drinks return 404.
+
+## Step 3: Create your milk tea
+
+Open the Vite URL printed by `npm run dev`. Tea Studio loads option prices from
+the API, previews tea colors, cup sizes, ice, and toppings, and saves your creation
+to Render Postgres. Thai milk tea is selected by default.
+
+Select hot with pudding to see the combination warning; new pudding selections
+are disabled while hot is selected. The saved-drink list and editing pages will
+be implemented in the next stage.

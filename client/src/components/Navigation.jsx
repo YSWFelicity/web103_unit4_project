@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import '../App.css'
 import '../css/Navigation.css'
 
@@ -6,12 +7,11 @@ const Navigation = () => {
     return (
         <nav>
             <ul>
-                <li><h1>Bolt Bucket 🏎️</h1></li>
+                <li><Link className="brand" to="/">Tea Studio <span>✦</span></Link></li>
             </ul>
 
             <ul>
-                <li><a href='/' role='button'>Customize</a></li>
-                <li><a href='/customcars' role='button'>View Cars</a></li>
+                <li><Link to='/'>Customize</Link></li>
             </ul>
             
         </nav>
