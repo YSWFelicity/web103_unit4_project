@@ -11,19 +11,23 @@ const App = () => {
   let element = useRoutes([
     {
       path: '/',
-      element: <CreateCar title='BOLT BUCKET | Customize' />
+      element: <CreateCar />
     },
     {
-      path:'/customcars',
-      element: <ViewCars title='BOLT BUCKET | Custom Cars' />
+      path:'/drinks',
+      element: <ViewCars />
     },
     {
-      path: '/customcars/:id',
-      element: <CarDetails title='BOLT BUCKET | View' />
+      path: '/drinks/:id',
+      element: <CarDetails />
     },
     {
-      path: '/edit/:id',
-      element: <EditCar title='BOLT BUCKET | Edit' />
+      path: '/drinks/:id/edit',
+      element: <EditCar />
+    },
+    {
+      path: '*',
+      element: <main className="studio"><h1>Page not found</h1><a href="/">Return to Tea Studio</a></main>
     }
   ])
 

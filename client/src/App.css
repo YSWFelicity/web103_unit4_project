@@ -41,3 +41,27 @@ input[type=checkbox] { accent-color: #475638; width: 17px; height: 17px; }
 .steam { position: absolute; top: -45px; left: 20px; color: #8a9179; font-size: 25px; }
 @media (max-width: 740px) { .builder { grid-template-columns: 1fr; } .preview-panel { position: static; } .studio { padding: 30px 16px; } .customize-panel { padding: 24px; } .drink-preview { height: 290px; } }
 @media (max-width: 380px) { .form-grid { grid-template-columns: 1fr; gap: 0; } }
+.button-link { display: inline-block; background: #475638; color: white; padding: 13px 20px; border-radius: 10px; font-weight: 600; font-size: 14px; }
+.button-link:hover { background: #344128; }
+.text-link { text-decoration: underline; text-underline-offset: 4px; font-size: 14px; }
+.tea-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.tea-card { overflow: hidden; border: 1px solid #e5e1d6; border-radius: 18px; background: #fffefa; }
+.tea-card .drink-preview { height: 270px; background: #eeeedf; }
+.tea-card .cup-scene { scale: .8; }
+.tea-card-body { padding: 24px; }
+.tea-card h2 { font-family: Georgia, serif; font-size: 23px; font-weight: 400; overflow-wrap: anywhere; }
+.tea-card p:not(.eyebrow) { color: #747767; font-size: 14px; }
+.card-actions { display: flex; align-items: center; gap: 16px; margin-top: 20px; }
+.delete-button { background: transparent; color: #943f24; border: 1px solid #e1c9bd; padding: 9px 12px; font-size: 14px; }
+.delete-button:hover { background: #fff0e8; }
+.card-actions .delete-button { margin-left: auto; }
+.empty-state { background: #eeeedf; border-radius: 18px; text-align: center; padding: 60px 24px; }
+.detail-heading { margin-top: 32px; }
+.detail-heading h1 { overflow-wrap: anywhere; }
+.recipe-details { margin: 25px 0; }
+.recipe-details > div { display: flex; justify-content: space-between; gap: 24px; padding: 16px 0; border-bottom: 1px solid #e5e1d6; }
+.recipe-details dt { color: #747767; }
+.recipe-details dd { margin: 0; text-align: right; }
+.detail-actions { display: flex; gap: 16px; align-items: center; }
+@media (max-width: 950px) { .tea-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .tea-grid { grid-template-columns: 1fr; } nav { padding: 20px 16px; } nav ul { gap: 12px; } .brand { font-size: 24px; } }

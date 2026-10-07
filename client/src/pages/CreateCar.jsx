@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import DrinkPreview from '../components/DrinkPreview'
-import { getOptions, createDrink } from '../services/DrinksAPI'
+import { getOptions, createDrink, updateDrink } from '../services/DrinksAPI'
 import { labels, money, calculatePrice, validateCombination } from '../utilities/drinks'
 import '../App.css'
 
-const CreateCar = () => {
-    const [drink, setDrink] = useState({ name: '', tea_base: 'thai', size: 'medium', milk: 'whole', sweetness: 50, ice: 'regular', toppings: [] })
+const CreateCar = ({ initialDrink, onSaved }) => {
+    const editing = !!initialDrink
+    const [drink, setDrink] = useState(initialDrink || { name: '', tea_base: 'thai', size: 'medium', milk: 'whole', sweetness: 50, ice: 'regular', toppings: [] })
     const [options, setOptions] = useState(null)
     const [error, setError] = useState('')
     const [saved, setSaved] = useState(null)
@@ -26,7 +28,11 @@ const CreateCar = () => {
         event.preventDefault()
         if (saving || combinationError) return
         setSaving(true); setError(''); setSaved(null)
-        try { setSaved(await createDrink(drink)) }
+        try {
+            const result = editing ? await updateDrink(initialDrink.id, drink) : await createDrink(drink)
+            setSaved(result)
+            onSaved?.(result)
+        }
         catch (err) { setError(err.message) }
         finally { setSaving(false) }
     }
@@ -35,7 +41,7 @@ const CreateCar = () => {
     </select></label>
 
     return <main className="studio">
-        <header className="page-heading"><p className="eyebrow">YOUR CUP, YOUR WAY</p><h1>A little tea. A lot of you.</h1><p>Build your perfect milk tea, one delicious detail at a time.</p></header>
+        <header className="page-heading"><p className="eyebrow">YOUR CUP, YOUR WAY</p><h1>{editing ? 'A fresh take on your favorite.' : 'A little tea. A lot of you.'}</h1><p>{editing ? 'Update your saved recipe and make it just right.' : 'Build your perfect milk tea, one delicious detail at a time.'}</p>{editing && <Link className="text-link" to={`/drinks/${initialDrink.id}`}>← Cancel and return to your tea</Link>}</header>
         {loading ? <p role="status">Loading the tea menu…</p> : !options ? <div className="notice error" role="alert">{error}<button onClick={loadOptions}>Retry</button></div> :
         <div className="builder">
             <section className="preview-panel"><p className="eyebrow">FRESHLY IMAGINED</p><DrinkPreview drink={drink} /><h2>{labels[drink.tea_base]}</h2><p>{labels[drink.milk]} · {drink.sweetness}% sweetness</p><div className="price-row"><span>Your creation</span><strong>{money(calculatePrice(drink, options))}</strong></div><small>Preview is an illustration of your selections.</small></section>
@@ -49,8 +55,8 @@ const CreateCar = () => {
                     <fieldset className="topping-options"><legend>A little extra</legend>{Object.entries(options.toppings).map(([value, cents]) => <label key={value}><input type="checkbox" checked={drink.toppings.includes(value)} disabled={drink.ice === 'hot' && value === 'pudding' && !drink.toppings.includes(value)} onChange={e => update('toppings', e.target.checked ? [...drink.toppings, value] : drink.toppings.filter(t => t !== value))} />{labels[value]}<span>+{money(cents / 100)}</span></label>)}<small>Pudding is available with cold drinks only.</small></fieldset>
                     {combinationError && <p className="notice error" role="alert">{combinationError}</p>}
                     {error && <p className="notice error" role="alert">{error}</p>}
-                    {saved && <p className="notice success" role="status">Saved “{saved.name}” for {money(saved.price)}! You can create another cup.</p>}
-                    <button type="submit" disabled={saving || !!combinationError}>{saving ? 'Saving your tea…' : `Save my tea · ${money(calculatePrice(drink, options))}`}</button>
+                    {saved && <p className="notice success" role="status">Saved “{saved.name}” for {money(saved.price)}! <Link className="text-link" to={`/drinks/${saved.id}`}>View your tea →</Link></p>}
+                    <button type="submit" disabled={saving || !!combinationError}>{saving ? 'Saving your tea…' : `${editing ? 'Save changes' : 'Save my tea'} · ${money(calculatePrice(drink, options))}`}</button>
                 </fieldset>
             </form>
         </div>}

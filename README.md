@@ -70,5 +70,13 @@ the API, previews tea colors, cup sizes, ice, and toppings, and saves your creat
 to Render Postgres. Thai milk tea is selected by default.
 
 Select hot with pudding to see the combination warning; new pudding selections
-are disabled while hot is selected. The saved-drink list and editing pages will
-be implemented in the next stage.
+are disabled while hot is selected.
+
+## Step 4: Manage saved teas
+
+Use **My teas** in the navigation to view `/drinks`. Each saved tea has a visual
+preview and links to details and editing. The detail page shows the full recipe.
+Editing reuses the customizer with the saved selections and recalculates price.
+Delete is available from both the list and detail pages, with confirmation.
+Loading states, retry actions, an empty collection, and missing-drink errors are
+handled in the interface.

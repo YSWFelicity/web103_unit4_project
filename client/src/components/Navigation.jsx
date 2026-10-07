@@ -12,6 +12,7 @@ const Navigation = () => {
 
             <ul>
                 <li><Link to='/'>Customize</Link></li>
+                <li><Link to='/drinks'>My teas</Link></li>
             </ul>
             
         </nav>
