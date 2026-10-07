@@ -80,3 +80,27 @@ Editing reuses the customizer with the saved selections and recalculates price.
 Delete is available from both the list and detail pages, with confirmation.
 Loading states, retry actions, an empty collection, and missing-drink errors are
 handled in the interface.
+
+## Assignment checklist
+
+- [x] React displays data from an Express API backed by Render PostgreSQL.
+- [x] A `drinks` table stores the customization displayed in the app.
+- [x] Multiple features each provide multiple options, including Thai milk tea.
+- [x] Prices update when the recipe changes and are recalculated on the server.
+- [x] Tea color, cup size, ice, and toppings change the visual preview.
+- [x] Users can create and save drinks, view all drinks, and open drink details.
+- [x] Users can edit and delete drinks from the collection or details page.
+- [x] Invalid combinations produce an error before saving and in the API.
+- [x] Stretch: hot drinks disable new pudding selections before submission.
+
+## Verification
+
+The production build passes with `npm run build`. API checks against Render
+covered CRUD, pricing, invalid IDs/options, duplicate toppings, and invalid
+combinations. Safari checks covered saving a Thai milk tea with boba ($6.25),
+opening details, editing it to add grass jelly ($7.00), seeing it in the list,
+and cancelling the delete confirmation. The test record was then deleted via
+the API, and refreshing the collection showed the empty state.
+
+The app currently runs locally; creating the database does not deploy the web
+application. `server/.env` is private and excluded from Git.
